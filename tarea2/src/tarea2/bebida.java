@@ -1,7 +1,13 @@
 package tarea2;
 
 abstract class Bebida {
-    public abstract String beber();
+    public Bebida() {
+        super();
+    }
+
+    public String beber() {
+        return "sabor: ";
+    }
 }
 
 class Sprite extends Bebida {
@@ -9,7 +15,7 @@ class Sprite extends Bebida {
         super();
     }
     public String beber() {
-        return "Sprite";
+        return super.beber() + "Sprite";
     }
 }
 
@@ -18,7 +24,7 @@ class Cocacola extends Bebida {
         super();
     }
     public String beber() {
-        return "CocaCola";
+        return super.beber() + "CocaCola";
     }
 }
 
@@ -27,6 +33,6 @@ class Fanta extends Bebida {
         super();
     }
     public String beber() {
-        return "Fanta";
+        return super.beber() + "Fanta";
     }
 }

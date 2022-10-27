@@ -1,5 +1,10 @@
 package tarea2;
 
-public class moneda {
+abstract class moneda {
     
 }
+
+class moneda100 extends moneda {}
+class moneda500 extends moneda {}
+class moneda1000 extends moneda {}
+
