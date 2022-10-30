@@ -1,5 +1,6 @@
 package tarea2;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 class Expendedor {
@@ -10,7 +11,7 @@ class Expendedor {
     private DepositoVuelto vuelto;
 
     private int precio;
-
+ 
     public Expendedor(int numBebidas, int precioBebidas) {
         coca = new Deposito();
         sprite = new Deposito();
@@ -27,16 +28,37 @@ class Expendedor {
 
     public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException {
         Bebida r = null;
-        if(m != null && num == 1) { // convertirlo a un switch y usar ifs para manejar excepciones :)
-            r = coca.getBebida();
+
+        if(m == null) {
+            throw new PagoIncorrectoException();
         }
-        else if(m != null && num == 2) {
-            r = sprite.getBebida();
+        else if(m.getValor() < precio) {
+            throw new PagoInsuficienteException();
         }
-        else if(m != null && num == 3) {
-            r = fanta.getBebida();
+        else {
+            switch(num) {
+                case 1: // cocacola
+                    if(coca.getSize() == 0) {
+                        throw new NoHayBebidaException();
+                    }
+                    return coca.getBebida();
+                    
+                case 2: // sprite
+                    if(sprite.size() == 0) {
+                        throw new NoHayBebidaException();
+                    }
+                    return sprite.getBebida();
+                
+                case 3: // fanta
+                    if(fanta.getSize() == 0) {
+                        throw new NoHayBebidaException();
+                    }
+                    return fanta.getBebida();
+                
+                default:
+                    throw new NoHayBebidaException();
+            }
         }
-        return r;
     }
 
     public Moneda getVuelto() {
