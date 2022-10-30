@@ -13,7 +13,7 @@ class Deposito {
     }
 
     public Bebida getBebida() {
-        if(stock.size() == 0) {
+        if (stock.size() == 0) {
             return null;
         } else {
             return stock.remove(0);
