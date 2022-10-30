@@ -2,21 +2,21 @@ package tarea2;
 import java.util.ArrayList;
 
 class Deposito {
-    private ArrayList<Bebida> a;
+    private ArrayList<Bebida> stock;
 
     public Deposito() {
-        a = new ArrayList<Bebida>();
+        stock = new ArrayList<Bebida>();
     }
 
     public void addBebida(Bebida b) {
-        a.add(b);
+        stock.add(b);
     }
 
     public Bebida getBebida() {
-        if(a.size() == 0) {
+        if(stock.size() == 0) {
             return null;
         } else {
-            return a.remove(0);
+            return stock.remove(0);
         }
     }
 }
