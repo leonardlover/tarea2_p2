@@ -1,10 +1,12 @@
 package tarea2;
 
-abstract class moneda {
-    
+abstract class Moneda {
+    public Moneda() {
+    }
+
+    public String getSerie() {
+        return this.toString();
+    }
+
+    public abstract int getValor();
 }
-
-class moneda100 extends moneda {}
-class moneda500 extends moneda {}
-class moneda1000 extends moneda {}
-
