@@ -27,7 +27,7 @@ class Comprador {
         return sabor;
     }
 
-    public int getVuelo() {
+    public int getVuelto() {
         return vuelto;
     }
 }
