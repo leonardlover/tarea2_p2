@@ -7,4 +7,8 @@
 
 #### Ejecucion
 
-TODO
+El main se encuentra en el archivo tarea2/src/tarea2/Tarea2.java
+
+#### Diagrama de clase UML
+
+Se encuentra en el archivo UML-classDiagram.pdf
