@@ -27,71 +27,56 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual) {
-        try {
-            if (m == null) {
-                throw new PagoIncorrectoException();
-            }
-            else if (m.getValor() < precio) {
-                vuelto.addMoneda(m);
-                throw new PagoInsuficienteException();
-            }
-            else {
-                switch (cual) {
-                    case 1: // cocacola
-                        if (coca.getSize() == 0) {
-                            vuelto.addMoneda(m);
-                            throw new NoHayBebidaException();
-                        }
-
-                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
-                            vuelto.addMoneda(new Moneda100());
-                        }
-
-                        return coca.getBebida();
-                        
-                    case 2: // sprite
-                        if (sprite.getSize() == 0) {
-                            vuelto.addMoneda(m);
-                            throw new NoHayBebidaException();
-                        }
-
-                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
-                            vuelto.addMoneda(new Moneda100());
-                        }
-
-                        return sprite.getBebida();
-                    
-                    case 3: // fanta
-                        if (fanta.getSize() == 0) {
-                            vuelto.addMoneda(m);
-                            throw new NoHayBebidaException();
-                        }
-
-                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
-                            vuelto.addMoneda(new Moneda100());
-                        }
-
-                        return fanta.getBebida();
-                    
-                    default:
+    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException {
+        if (m == null) {
+            throw new PagoIncorrectoException();
+        }
+        else if (m.getValor() < precio) {
+            vuelto.addMoneda(m);
+            throw new PagoInsuficienteException();
+        }
+        else {
+            switch (cual) {
+                case 1: // cocacola
+                    if (coca.getSize() == 0) {
                         vuelto.addMoneda(m);
                         throw new NoHayBebidaException();
-                }
-            }
-        }
+                    }
 
-        catch (PagoIncorrectoException ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
-        catch (PagoInsuficienteException ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
-        catch (NoHayBebidaException ex) {
-            System.out.println(ex.getMessage());
-            return null;
+                    for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
+                        vuelto.addMoneda(new Moneda100());
+                    }
+
+                    return coca.getBebida();
+                    
+                case 2: // sprite
+                    if (sprite.getSize() == 0) {
+                        vuelto.addMoneda(m);
+                        throw new NoHayBebidaException();
+                    }
+
+                    for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
+                        vuelto.addMoneda(new Moneda100());
+                    }
+
+                    return sprite.getBebida();
+                
+                case 3: // fanta
+                    if (fanta.getSize() == 0) {
+                        vuelto.addMoneda(m);
+                        throw new NoHayBebidaException();
+                    }
+
+                    for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
+                        vuelto.addMoneda(new Moneda100());
+                    }
+
+                    return fanta.getBebida();
+                
+                default:
+                    vuelto.addMoneda(m);
+                    throw new NoHayBebidaException();
+            }
         }
     }
 

@@ -5,23 +5,21 @@ class Comprador {
     private int vuelto;
 
     public Comprador(Moneda m, int cualBebida, Expendedor exp) {
-        Bebida b = exp.comprarBebida(m, cualBebida);
         Moneda n;
+        vuelto = 0;
 
-        if (b != null) {
+        try {
+            Bebida b = exp.comprarBebida(m, cualBebida);
             sabor = b.beber();
-            vuelto = 0;
-
-            n = exp.getVuelto();
-            while (n != null) {
-                vuelto += n.getValor();
-                n = exp.getVuelto();
-            }
         }
-        else {
-            n = exp.getVuelto();
-            if (n != null) {
-                vuelto = n.getValor();
+
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        finally {
+            while ((n = exp.getVuelto()) != null) {
+                vuelto += n.getValor();
             }
         }
     }
