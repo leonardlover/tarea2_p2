@@ -19,4 +19,8 @@ class Deposito {
             return stock.remove(0);
         }
     }
+
+    public int getSize() {
+        return stock.size();
+    }
 }

@@ -12,12 +12,15 @@ class Comprador {
             sabor = b.beber();
             vuelto = 0;
 
-            while ((n = exp.getVuelto()) != null) {
+            n = exp.getVuelto();
+            while (n != null) {
                 vuelto += n.getValor();
+                n = exp.getVuelto();
             }
         }
         else {
-            if ((n = exp.getVuelto()) != null) {
+            n = exp.getVuelto();
+            if (n != null) {
                 vuelto = n.getValor();
             }
         }
