@@ -1,6 +1,5 @@
 package tarea2;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 class Expendedor {
@@ -28,7 +27,7 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException {
+    public Bebida comprarBebida(Moneda m, int cual) {
         try {
             if (m == null) {
                 throw new PagoIncorrectoException();
@@ -38,26 +37,26 @@ class Expendedor {
                 throw new PagoInsuficienteException();
             }
             else {
-                switch (num) {
+                switch (cual) {
                     case 1: // cocacola
                         if (coca.getSize() == 0) {
                             vuelto.addMoneda(m);
                             throw new NoHayBebidaException();
                         }
 
-                        for (int i = 0; i < (precio - m.getValor()) / 100; i++) {
+                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
                             vuelto.addMoneda(new Moneda100());
                         }
 
                         return coca.getBebida();
                         
                     case 2: // sprite
-                        if (sprite.size() == 0) {
+                        if (sprite.getSize() == 0) {
                             vuelto.addMoneda(m);
                             throw new NoHayBebidaException();
                         }
 
-                        for (int i = 0; i < (precio - m.getValor()) / 100; i++) {
+                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
                             vuelto.addMoneda(new Moneda100());
                         }
 
@@ -69,7 +68,7 @@ class Expendedor {
                             throw new NoHayBebidaException();
                         }
 
-                        for (int i = 0; i < (precio - m.getValor()) / 100; i++) {
+                        for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
                             vuelto.addMoneda(new Moneda100());
                         }
 
